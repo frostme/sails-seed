@@ -24,11 +24,9 @@ These are necessary functions to be loaded with waterline.
 
 2) In your config/bootstrap.js file, add the following line
 ```js
-seed(modelArray, cb);
+seed(cb);
 ```
-This will run your seed on startup. The two arguments are
-- modelArray: and array of your models (e.g., [Model1, Model2, ...])
-- cb: the callback to be run after your seeding
+This will run your seed on startup.
 
 3) Add seed data to your models
 In the models you wish to seed, add the following
