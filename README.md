@@ -33,7 +33,7 @@ In the models you wish to seed, add the following
 ```js
 seedData: []
 ```
-In your seed data add an array of objects that represent new models to be seeded.
+In your seed data add an array of objects, or a single object, that represent new model(s) to be seeded.
 
 ## Author
 
