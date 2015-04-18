@@ -1,0 +1,24 @@
+{
+  "name": "sails-seed",
+  "version": "0.0.1",
+  "description": "Simple data seeding for sails.js projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://https://github.com/frostme/sails-seed.git"
+  },
+  "keywords": [
+    "sails",
+    "seed",
+    "data"
+  ],
+  "author": "frostme",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^0.9.0",
+    "extend": "^2.0.0"
+  }
+}
