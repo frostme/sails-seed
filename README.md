@@ -1,4 +1,4 @@
-SAILS-SEED
+SAILS-SEED [![Build Status](https://travis-ci.org/frostme/sails-seed.svg?branch=master)](https://travis-ci.org/frostme/sails-seed)
 ==========
 
 
