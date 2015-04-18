@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://https://github.com/frostme/sails-seed.git"
+    "url": "https://github.com/frostme/sails-seed.git"
   },
   "keywords": [
     "sails",
