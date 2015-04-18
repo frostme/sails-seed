@@ -23,6 +23,7 @@
     "lodash": "^3.7.0"
   },
   "devDependencies": {
-    "chai": "^2.2.0"
+    "chai": "^2.2.0",
+    "mocha": "^2.2.4"
   }
 }
