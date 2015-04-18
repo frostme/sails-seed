@@ -1,9 +1,8 @@
 var async  = require('async');
-var _      = require('lodash');
 module.exports = function(cb){
   async.series(_(sails.models).toArray().filter(function (it){
     return !it.junctionTable;
-  }).map(function(model){ 
+  }).value().map(function(model){ 
     return model.seed;
   }), cb);
 };
