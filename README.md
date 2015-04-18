@@ -35,6 +35,10 @@ seedData: []
 ```
 In your seed data add an array of objects, or a single object, that represent new model(s) to be seeded.
 
+4) Configuration
+If you would like to configure your seed, you can add the following options to you models,
+- overwrite: if set to true, will overwrite you existing data
+
 ## Author
 
 M. Elliot Frost, CEO of [Frostware](http://www.frostwaresolutions.net)
