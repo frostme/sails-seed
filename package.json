@@ -1,10 +1,11 @@
 {
   "name": "sails-seed",
-  "version": "0.1.1",
+  "version": "0.2.2",
   "description": "Simple data seeding for sails.js projects.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "postinstall": "node scripts/postinstall"
   },
   "repository": {
     "type": "git",
@@ -17,10 +18,14 @@
   ],
   "author": "frostme",
   "license": "ISC",
+  "sails": {
+    "isHook": true
+  },
   "dependencies": {
     "async": "^0.9.0",
     "extend": "^2.0.0",
-    "lodash": "^3.7.0"
+    "lodash": "^3.7.0",
+    "semver": "^4.3.3"
   },
   "devDependencies": {
     "chai": "^2.2.0",

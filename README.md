@@ -9,35 +9,55 @@ SAILS-SEED [![Build Status](https://travis-ci.org/frostme/sails-seed.svg?branch=
 ```
 npm install sails-seed
 ```
+Depending on you version of sails, sails-seed is treated differently
+On install, a config/seed.js is created. Here you will put your seeding data.
+
+## Sails 0.11
+For Sails 0.11 and greater there is nothing further to do. Sails-seed runs as an installable hook.
+
+## Sails 0.10
+For Sails 0.10 and previous, a file of api/hook/seed/index.js is created on installation. 
+No further configuration is required, but this file is necessary for the data to seed.
 
 ## Usage
-```js
-var seed = require('sails-seed');
-```
-1) In your config/models.js file, add the following lines
-```js
-seed: seed.seed,
-seedArray: seed.seedArray,
-seedObject: seed.seedObject
-```
-These are necessary functions to be loaded with waterline.
+Place your seeding data in the config/seed.js file.
+For exampe, for a Person model, your config/seed.js file might look like
 
-2) In your config/bootstrap.js file, add the following line
 ```js
-seed(cb);
+module.exports.seed = {
+  person: [
+    {
+      firstName: 'Luke',
+      lastName:  'Skywalker'
+    },
+    {
+      firstName: 'Darth',
+      lastName:  'Vader'
+    }
+  ]
+}
 ```
-This will run your seed on startup.
 
-3) Add seed data to your models
-In the models you wish to seed, add the following
+By default, sails-seed will overwrite the data which is present. If you would not like your
+seed to overwrite, your new config/seed.js file might look like
+
 ```js
-seedData: []
+module.exports.seed = {
+  person: {
+    data: [
+      {
+        firstName: 'Luke',
+        lastName:  'Skywalker'
+      },
+      {
+        firstName: 'Darth',
+        lastName:  'Vader'
+      }
+    ],
+    overwrite: false
+  }
+}
 ```
-In your seed data add an array of objects, or a single object, that represent new model(s) to be seeded.
-
-4) Configuration
-If you would like to configure your seed, you can add the following options to you models,
-- overwrite: if set to true, will overwrite you existing data
 
 ## Author
 
