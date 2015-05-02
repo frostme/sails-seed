@@ -1,6 +1,6 @@
 {
   "name": "sails-seed",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "Simple data seeding for sails.js projects.",
   "main": "index.js",
   "scripts": {
