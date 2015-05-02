@@ -89,7 +89,7 @@ function patchAttributes(){
         }
       } else {
         _.extend(model, {
-          seedData: []
+          seedData: null
         });
       }
     });
