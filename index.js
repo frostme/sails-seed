@@ -41,14 +41,13 @@ module.exports = function(sails){
           //and let sails continue
 
           patch();
-          seeds();
-          done();
+          seeds(done);
         });
     }
   };
 };
 
-function seeds(){
+function seeds(callback){
   async.eachSeries(Object.keys(sails.models), function(model, cb){
     if(sails.models[model].seed){
       sails.models[model].seed(cb);
@@ -58,6 +57,7 @@ function seeds(){
   }, function(err){
     if(err) sails.log.error('Your seeds were not planted correctly');
     else sails.log.info('Your seeds are ready to grow!');
+    callback();
   });
 };
 function patch(){
