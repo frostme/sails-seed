@@ -77,9 +77,14 @@ function patchAttributes(){
       var data = sails.config.seeds[model.identity];
       if(data){
         if(data.overwrite == false){
-          _extend(model, {
-            seedData: data.data,
+          _.extend(model, {
+            seedData: data.data ? data.data : [],
             overwrite: false
+          });
+        } else if(data.overwrite == true){
+          _.extend(model, {
+            seedData: data.data ? data.data : [],
+            overwrite: true
           });
         } else {
           _.extend(model, {
