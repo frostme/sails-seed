@@ -1,4 +1,4 @@
-SAILS-SEED [![Build Status](https://travis-ci.org/frostme/sails-seed.svg?branch=master)](https://travis-ci.org/frostme/sails-seed)
+SAILS-SEED [![Build Status](https://travis-ci.org/frostme/sails-seed.svg?branch=master)](https://travis-ci.org/frostme/sails-seed)[![Coverage Status](https://coveralls.io/repos/frostme/sails-seed/badge.svg?branch=master)](https://coveralls.io/r/frostme/sails-seed?branch=master)
 ==========
 
 
