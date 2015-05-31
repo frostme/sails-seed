@@ -37,7 +37,8 @@ module.exports.seed = {
   ]
 }
 ```
-
+## Configuration
+### Overwrite
 By default, sails-seed will overwrite the data which is present. If you would not like your
 seed to overwrite, your new config/seed.js file might look like
 
@@ -58,6 +59,28 @@ module.exports.seed = {
   }
 }
 ```
+### Unique
+If you would like to seed only data that is not presetnt, you can use a unique field(s), like so
+
+```js
+
+module.exports.seed = {
+  person: {
+    data: [
+      {
+        firstName: 'Luke',
+        lastName:  'Skywalker'
+      },
+      {
+        firstName: 'Darth',
+        lastName:  'Vader'
+      }
+    ],
+    unique: ['lastName', 'firstName']
+  }
+}
+```
+This will only create objects that do not have the unique firstName and lastName combinations
 
 ## Author
 

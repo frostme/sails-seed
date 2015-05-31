@@ -2,6 +2,9 @@ sails = {
   log: {
     debug: function(text){
       return text;
+    },
+    error: function(text){
+
     }
   },
   seeds: {
@@ -14,9 +17,21 @@ var seed       = require('../lib/seed'),
     seedObject =  require('../lib/seedObject');
 
 model = {
-  identity: 'data'
+  identity: 'data',
+  createEach: function(){},
+  exec: function(){},
+  count: function(){},
+  destroy: function(){},
+  findOrCreate: function(){}
 }
 
 seed(model);
 seedArray(model);
 seedObject(model);
+
+chai   = require('chai');
+expect = chai.expect;
+assert = chai.assert;
+should = chai.should();
+mocky  = require('sinon');
+_      = require('lodash');

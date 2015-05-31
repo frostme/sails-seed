@@ -76,22 +76,18 @@ function patchAttributes(){
     .forEach(function(model){
       var data = sails.config.seeds[model.identity];
       if(data){
-        if(data.overwrite == false){
-          _.extend(model, {
-            seedData: data.data ? data.data : [],
-            overwrite: false
-          });
-        } else if(data.overwrite == true){
-          _.extend(model, {
-            seedData: data.data ? data.data : [],
-            overwrite: true
-          });
+        var extend = {};
+        if(_.some([data.overwrite, data.unique], _.isUndefined)){
+          extend.seedData = data.data ? data.data : [];
+          extend.overwrite = data.overwrite;
+          extend.unique    = data.unique;
         } else {
-          _.extend(model, {
-            seedData: data,
-            overwrite: true
-          });
+          extend.seedData = data;
+          extend.overwrite = true;
         }
+
+        _.extend(model, extend);
+
       } else {
         _.extend(model, {
           seedData: null
