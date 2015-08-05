@@ -10,7 +10,7 @@ SAILS-SEED [![Build Status](https://travis-ci.org/frostme/sails-seed.svg?branch=
 npm install sails-seed
 ```
 Depending on you version of sails, sails-seed is treated differently
-On install, a config/seed.js is created. Here you will put your seeding data.
+On install, a config/seeds.js is created. Here you will put your seeding data.
 
 ## Sails 0.11
 For Sails 0.11 and greater there is nothing further to do. Sails-seed runs as an installable hook.
@@ -20,8 +20,8 @@ For Sails 0.10 and previous, a file of api/hook/seed/index.js is created on inst
 No further configuration is required, but this file is necessary for the data to seed.
 
 ## Usage
-Place your seeding data in the config/seed.js file.
-For exampe, for a Person model, your config/seed.js file might look like
+Place your seeding data in the config/seeds.js file.
+For exampe, for a Person model, your config/seeds.js file might look like
 
 ```js
 module.exports.seed = {
@@ -40,7 +40,7 @@ module.exports.seed = {
 ## Configuration
 ### Overwrite
 By default, sails-seed will overwrite the data which is present. If you would not like your
-seed to overwrite, your new config/seed.js file might look like
+seed to overwrite, your new config/seeds.js file might look like
 
 ```js
 module.exports.seed = {
