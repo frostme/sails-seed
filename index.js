@@ -77,7 +77,7 @@ function patchAttributes(){
       var data = sails.config.seeds[model.identity];
       if(data){
         var extend = {};
-        if(_.some([data.overwrite, data.unique], _.isUndefined)){
+        if(_.some([data.overwrite, data.unique], _.isDefined)){
           extend.seedData = data.data ? data.data : [];
           extend.overwrite = data.overwrite;
           extend.unique    = data.unique;
