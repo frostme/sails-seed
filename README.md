@@ -82,6 +82,59 @@ module.exports.seed = {
 ```
 This will only create objects that do not have the unique firstName and lastName combinations
 
+### Disable
+
+If you would like disable the seed hook (say for testing purposes)  simply add the following config option
+```js
+
+module.exports.seed = {
+  disable: true,
+  person: {
+    data: [
+      {
+        firstName: 'Luke',
+        lastName:  'Skywalker'
+      },
+      {
+        firstName: 'Darth',
+        lastName:  'Vader'
+      }
+    ],
+    unique: ['lastName', 'firstName']
+  }
+}
+```
+
+
+### Active
+
+If you would like to disable per model, you can add an active option. Like so will disable the person seeding
+```js
+
+module.exports.seed = {
+  person: {
+    active: false,
+    data: [
+      {
+        firstName: 'Luke',
+        lastName:  'Skywalker'
+      },
+      {
+        firstName: 'Darth',
+        lastName:  'Vader'
+      }
+    ],
+    unique: ['lastName', 'firstName']
+  }
+}
+```
+
+### Configuration
+
+You may also set configurations (say for testing) via the sails pipeline. Just make sure that
+you have set the configurations you wish you have before the _hook:moduleloader:loaded_ event.
+This way you wouldn't have to change your configuration for testing in the code, and could 
+have the test configuration. 
 ## Author
 
 M. Elliot Frost, CEO of [Frostware](http://www.frostwaresolutions.net)
