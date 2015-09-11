@@ -48,17 +48,21 @@ module.exports = function(sails){
 };
 
 function seeds(callback){
-  async.eachSeries(Object.keys(sails.models), function(model, cb){
-    if(sails.models[model].seed){
-      sails.models[model].seed(cb);
-    } else {
-      cb();
-    }
-  }, function(err){
-    if(err) sails.log.error('Your seeds were not planted correctly');
-    else sails.log.info('Your seeds are ready to grow!');
-    callback();
-  });
+  if(sails.config.seeds.disable){
+    callback()
+  } else {
+    async.eachSeries(Object.keys(sails.models), function(model, cb){
+      if(sails.models[model].seed && !sails.config.seeds[model].active === false){
+        sails.models[model].seed(cb);
+      } else {
+        cb();
+      }
+    }, function(err){
+      if(err) sails.log.error('Your seeds were not planted correctly');
+      else sails.log.info('Your seeds are ready to grow!');
+      callback();
+    });
+  }
 };
 function patch(){
   _(sails.models)
