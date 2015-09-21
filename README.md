@@ -16,7 +16,7 @@ On install, a config/seeds.js is created. Here you will put your seeding data.
 For Sails 0.11 and greater there is nothing further to do. Sails-seed runs as an installable hook.
 
 ## Sails 0.10
-For Sails 0.10 and previous, a file of api/hook/seed/index.js is created on installation. 
+For Sails 0.10 and previous, a file of api/hook/seed/index.js is created on installation.
 No further configuration is required, but this file is necessary for the data to seed.
 
 ## Usage
@@ -24,7 +24,7 @@ Place your seeding data in the config/seeds.js file.
 For exampe, for a Person model, your config/seeds.js file might look like
 
 ```js
-module.exports.seed = {
+module.exports.seeds = {
   person: [
     {
       firstName: 'Luke',
@@ -43,7 +43,7 @@ By default, sails-seed will overwrite the data which is present. If you would no
 seed to overwrite, your new config/seeds.js file might look like
 
 ```js
-module.exports.seed = {
+module.exports.seeds = {
   person: {
     data: [
       {
@@ -64,7 +64,7 @@ If you would like to seed only data that is not presetnt, you can use a unique f
 
 ```js
 
-module.exports.seed = {
+module.exports.seeds = {
   person: {
     data: [
       {
@@ -87,7 +87,7 @@ This will only create objects that do not have the unique firstName and lastName
 If you would like disable the seed hook (say for testing purposes)  simply add the following config option
 ```js
 
-module.exports.seed = {
+module.exports.seeds = {
   disable: true,
   person: {
     data: [
@@ -111,7 +111,7 @@ module.exports.seed = {
 If you would like to disable per model, you can add an active option. Like so will disable the person seeding
 ```js
 
-module.exports.seed = {
+module.exports.seeds = {
   person: {
     active: false,
     data: [
@@ -133,8 +133,8 @@ module.exports.seed = {
 
 You may also set configurations (say for testing) via the sails pipeline. Just make sure that
 you have set the configurations you wish you have before the _hook:moduleloader:loaded_ event.
-This way you wouldn't have to change your configuration for testing in the code, and could 
-have the test configuration. 
+This way you wouldn't have to change your configuration for testing in the code, and could
+have the test configuration.
 ## Author
 
 M. Elliot Frost, CEO of [Frostware](http://www.frostwaresolutions.net)
