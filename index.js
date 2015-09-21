@@ -55,7 +55,8 @@ function seeds(callback){
     var seedModels = Object.keys(seeds);
     async.eachSeries(seedModels, function(model, cb){
       var currentSeed = seeds[model];
-      if(_.contains(Object.keys(currentSeed), "active") && !currentSeed.active === false){
+      var hasActiveKey = _.contains(Object.keys(currentSeed), "active");
+      if(hasActiveKey && !currentSeed.active === false || !hasActiveKey){
         sails.models[model].seed(cb);
       } else {
         cb();
