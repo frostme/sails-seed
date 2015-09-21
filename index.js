@@ -48,11 +48,14 @@ module.exports = function(sails){
 };
 
 function seeds(callback){
-  if(sails.config.seeds.disable){
+  var seeds = sails.config.seeds;
+  if(seeds.disable){
     callback()
   } else {
-    async.eachSeries(Object.keys(sails.models), function(model, cb){
-      if(sails.models[model].seed && !sails.config.seeds[model].active === false){
+    var seedModels = Object.keys(seeds);
+    async.eachSeries(seedModels, function(model, cb){
+      var currentSeed = seeds[model];
+      if(_.contains(Object.keys(currentSeed), "active") && !currentSeed.active === false){
         sails.models[model].seed(cb);
       } else {
         cb();
