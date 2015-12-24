@@ -39,7 +39,7 @@ module.exports.seeds = {
 ```
 ## Configuration
 ### Overwrite
-By default, sails-seed will overwrite the data which is present. If you would not like your
+By default, sails-seed will not overwrite the data which is present. If you would not like your
 seed to overwrite, your new config/seeds.js file might look like
 
 ```js
@@ -81,6 +81,8 @@ module.exports.seeds = {
 }
 ```
 This will only create objects that do not have the unique firstName and lastName combinations
+Given an overwrite true option, sails-seed will only overwrite items which match the unique 
+requirements.
 
 ### Disable
 

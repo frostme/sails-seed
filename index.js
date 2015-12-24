@@ -87,7 +87,7 @@ function patchAttributes(){
           extend.unique    = data.unique;
         } else {
           extend.seedData = data;
-          extend.overwrite = true;
+          extend.overwrite = false;
         }
 
         _.extend(model, extend);
