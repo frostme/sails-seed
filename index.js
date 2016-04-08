@@ -33,7 +33,7 @@ module.exports = function(sails){
           //and let sails continue
 
           patchAttributes(function(){
-            patch(function(){);
+            patch(function(){
               seeds(done);
             });
           });
@@ -69,7 +69,7 @@ function patch(cb){
     } else {
       callback();
     }
-  }, function()[
+  }, function(){
     cb();
   });
 }
