@@ -137,6 +137,14 @@ You may also set configurations (say for testing) via the sails pipeline. Just m
 you have set the configurations you wish you have before the _hook:moduleloader:loaded_ event.
 This way you wouldn't have to change your configuration for testing in the code, and could
 have the test configuration.
+
+### Contributing
+
+All New Enhancements and development are branched of develop. Pull requests for enhancements should be added to develop.
+The current version that is published is master. Any bug fixes and bug pull requests will be added to the current release
+branch. That is, if version 1.4.x is released on master, then any bug fixes or bug pull requests should be added to 
+the branch v1.4. After merge and ready to release, a patch version of the v1.4 branch would be merged to master and 
+released. Once develop has gotten enough features, a new release branch will be created and merged to master.
 ## Author
 
 M. Elliot Frost, CEO of [Frostware](http://www.frostwaresolutions.net)
