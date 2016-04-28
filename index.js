@@ -47,7 +47,7 @@ function seeds(callback){
     callback()
   } else {
     async.each(_.keys(sails.models), function(model, cb){
-      if(sails.models[model].seed && !(sails.config.seeds[model].active === false)){
+      if(sails.models[model].seed && sails.config.seeds[model] && !(sails.config.seeds[model].active === false)){
         sails.models[model].seed(cb);
       } else {
         cb();
