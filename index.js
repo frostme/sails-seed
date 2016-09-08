@@ -53,7 +53,7 @@ function seeds(callback){
   if(sails.config.seeds.disable){
     callback()
   } else {
-    async.each(getModelsByPrioriy(), function(model, cb){
+    async.each(getModelsByPriority(), function(model, cb){
       if(sails.models[model].seed && sails.config.seeds[model] && !(sails.config.seeds[model].active === false)){
         sails.models[model].seed(cb);
       } else {
