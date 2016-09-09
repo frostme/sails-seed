@@ -42,11 +42,18 @@ module.exports = function(sails){
   };
 };
 
+
+function getModelsByPriority(){
+  return _.sortBy(_.keys(sails.models), function(key){
+    return sails.models[key].priority;
+  });
+};
+
 function seeds(callback){
   if(sails.config.seeds.disable){
     callback()
   } else {
-    async.each(_.keys(sails.models), function(model, cb){
+    async.eachSeries(getModelsByPriority(), function(model, cb){
       if(sails.models[model].seed && sails.config.seeds[model] && !(sails.config.seeds[model].active === false)){
         sails.models[model].seed(cb);
       } else {
@@ -79,13 +86,15 @@ function patchAttributes(callback){
       var data = sails.config.seeds[model.identity];
       if(data){
         var extend = {};
-        if(_.some([data.overwrite, data.unique], _.isDefined)){
+        if(_.some([data.overwrite, data.unique, data.priority], _.isDefined)){
           extend.seedData = data.data ? data.data : [];
           extend.overwrite = data.overwrite;
           extend.unique    = data.unique;
+          extend.priority    = data.priority;
         } else {
           extend.seedData = data;
           extend.overwrite = false;
+          extend.priority = 0;
         }
 
         _.extend(model, extend);
