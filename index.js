@@ -44,8 +44,8 @@ module.exports = function(sails){
 
 
 function getModelsByPriority(){
-  return _.sortBy(_.keys(sails.models), function(model){
-    return model.priority
+  return _.sortBy(_.keys(sails.models), function(key){
+    return sails.models[key].priority;
   });
 };
 
@@ -53,7 +53,7 @@ function seeds(callback){
   if(sails.config.seeds.disable){
     callback()
   } else {
-    async.each(getModelsByPriority(), function(model, cb){
+    async.eachSeries(getModelsByPriority(), function(model, cb){
       if(sails.models[model].seed && sails.config.seeds[model] && !(sails.config.seeds[model].active === false)){
         sails.models[model].seed(cb);
       } else {
