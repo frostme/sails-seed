@@ -45,7 +45,7 @@ module.exports = function(sails){
 
 function getModelsByPriority(){
   return _.sortBy(_.keys(sails.models), function(model){
-    return sails.config.seeds[model] && sails.config.seeds[model].priority;
+    return model.priority
   });
 };
 
@@ -86,13 +86,15 @@ function patchAttributes(callback){
       var data = sails.config.seeds[model.identity];
       if(data){
         var extend = {};
-        if(_.some([data.overwrite, data.unique], _.isDefined)){
+        if(_.some([data.overwrite, data.unique, data.priority], _.isDefined)){
           extend.seedData = data.data ? data.data : [];
           extend.overwrite = data.overwrite;
           extend.unique    = data.unique;
+          extend.priority    = data.priority;
         } else {
           extend.seedData = data;
           extend.overwrite = false;
+          extend.priority = 0;
         }
 
         _.extend(model, extend);
