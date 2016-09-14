@@ -13,14 +13,6 @@ var seed = require(path.join(libPath, 'seed')),
 module.exports = function(sails){
   return {
     initialize: function(done){
-      // first
-      //
-      // patch model to acquire seed data attribute
-      sails
-        .after(['hook:moduleloader:loaded'], function(){
-          patchAttributes();
-        });
-
       //later on wait for this/these event(s)
       //to apply methods to models
       var eventsToWaitFor = [];
@@ -40,8 +32,11 @@ module.exports = function(sails){
           //then seed models
           //and let sails continue
 
-          patch();
-          seeds(done);
+          patchAttributes(function(){
+            patch(function(){
+              seeds(done);
+            });
+          });
         });
     }
   };
@@ -71,20 +66,23 @@ function seeds(callback){
     });
   }
 };
-function patch(){
-  _(sails.models)
-    .forEach(function(model){
-      if(model.globalId){
-        seed(model);
-        seedArray(model);
-        seedObject(model);
-      }
-    });
+function patch(cb){
+  async.each(_.toArray(sails.models), function(model, callback){
+    if(model.globalId){
+      seed(model);
+      seedArray(model);
+      seedObject(model);
+      callback();
+    } else {
+      callback();
+    }
+  }, function(){
+    cb();
+  });
 }
 
-function patchAttributes(){
-  _(sails.models)
-    .forEach(function(model){
+function patchAttributes(callback){
+  async.each(_.toArray(sails.models), function(model, cb){
       var data = sails.config.seeds[model.identity];
       if(data){
         var extend = {};
@@ -100,11 +98,15 @@ function patchAttributes(){
         }
 
         _.extend(model, extend);
+        cb();
 
       } else {
         _.extend(model, {
           seedData: null
         });
+        cb();
       }
+    }, function(){
+      callback();
     });
 }
