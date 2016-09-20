@@ -1,7 +1,8 @@
 'use strict';
 
 //dependencies
-var async  = require('async'),
+var _ = require('lodash'),
+    async  = require('async'),
     path   = require('path'),
     libPath = path.join(__dirname, 'lib');
 
